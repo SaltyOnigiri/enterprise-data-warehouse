@@ -72,19 +72,5 @@ The Gold layer contains business-ready dimensional models optimized for reportin
 
 ## Architecture Diagram
 
-```text
-ERP CSV Files ──┐
-                │
-CRM CSV Files ──┤
-                ▼
-      Bronze Tables
-      (Raw Source Data)
-                ▼
-      Silver Tables
-   (Clean & Standardized)
-                ▼
-        Gold Views
-  (Dimensional Models)
-                ▼
-   Reports & Analytics
+![Architecture Diagram](../diagrams/data_architecture.png)
 ```
