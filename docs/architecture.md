@@ -12,15 +12,51 @@ The architecture was selected to separate raw data ingestion, data transformatio
 
 ### Bronze Layer
 
-Stores raw ERP and CRM source data with minimal transformations. This layer serves as the system of record for incoming datasets and preserves the original source data for auditing and troubleshooting purposes.
+The Bronze layer stores raw ERP and CRM source data with minimal transformations. Data is loaded as received from source systems to preserve traceability, support auditing requirements, and simplify troubleshooting.
+
+**Characteristics**
+
+- Raw source data
+- Minimal transformations
+- Full-load ingestion
+- Table-based storage
+- System of record for incoming datasets
 
 ### Silver Layer
 
-Applies data cleansing, standardization, validation, and business rules. Data quality issues are resolved and datasets are transformed into a consistent structure before analytical modeling.
+The Silver layer applies data cleansing, standardization, validation, and transformation processes. Data quality issues are resolved and datasets are converted into a consistent structure suitable for downstream analytical modeling.
+
+**Characteristics**
+
+- Data cleansing
+- Data standardization
+- Data normalization
+- Derived columns and transformations
+- Full-load processing
+- Table-based storage
 
 ### Gold Layer
 
-Contains dimensional models optimized for reporting and analytics, including fact and dimension tables designed to support business intelligence, dashboarding, and ad-hoc analysis.
+The Gold layer contains business-ready dimensional models optimized for reporting and analytics. Data from multiple source systems is integrated and transformed into fact and dimension structures that support business intelligence, dashboarding, and ad-hoc analysis.
+
+**Characteristics**
+
+- Data integration
+- Business logic implementation
+- Aggregated analytical datasets
+- Fact and dimension models
+- Reporting and analytics consumption layer
+- View-based access
+
+---
+
+## Implementation Details
+
+| Layer | Object Type | Load Method | Purpose |
+|---------|---------|---------|---------|
+| Bronze | Tables | Full Load | Raw data ingestion |
+| Silver | Tables | Full Load | Data cleansing and transformation |
+| Gold | Views | Derived from Silver | Reporting and analytics |
 
 ---
 
@@ -36,20 +72,19 @@ Contains dimensional models optimized for reporting and analytics, including fac
 
 ## Architecture Diagram
 
-```
+```text
 ERP CSV Files ──┐
                 │
 CRM CSV Files ──┤
                 ▼
-         Bronze Layer
-        (Raw Ingestion)
+      Bronze Tables
+      (Raw Source Data)
                 ▼
-         Silver Layer
-      (Data Cleansing &
-       Transformation)
+      Silver Tables
+   (Clean & Standardized)
                 ▼
-          Gold Layer
-      (Dimensional Model)
+        Gold Views
+  (Dimensional Models)
                 ▼
-      Reports & Analytics
+   Reports & Analytics
 ```
