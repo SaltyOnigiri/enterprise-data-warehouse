@@ -1,24 +1,35 @@
-# enterprise-data-warehouse
-End-to-end enterprise data warehouse project built using SQL Server. The solution integrates ERP and CRM data into a centralized analytical model to support reporting, dashboarding, and business intelligence.
+# Enterprise Data Warehouse
 
-# Business Requirements
+An end-to-end data warehouse project built in Databricks using a Medallion Architecture (Bronze, Silver, Gold). The solution integrates ERP and CRM data into a centralized analytical platform designed for reporting, analytics, and business intelligence.
 
 ## Project Overview
 
-The organization currently maintains customer, sales, and product data across multiple operational systems. Reporting requires manually combining data from these sources, resulting in inconsistent metrics and limited analytical capabilities.
+Organizations often store data across multiple operational systems, making reporting difficult and creating inconsistencies between departments. This project addresses that challenge by building a centralized data warehouse that transforms raw source data into analytics-ready dimensional models.
 
-This project aims to create a centralized data warehouse that provides a single source of truth for business reporting and analytics.
+### Key Objectives
 
-## Business Goals
+- Integrate ERP and CRM data into a unified platform
+- Improve data quality through cleansing and standardization
+- Implement a Medallion Architecture using Bronze, Silver, and Gold layers
+- Design dimensional models optimized for analytics
+- Enable reporting and ad-hoc analysis through Power BI and SQL
 
-- Consolidate ERP and CRM data into a unified platform
-- Improve data quality and consistency
-- Enable reliable reporting and dashboard development
-- Support data-driven business decisions
+### Architecture
 
-## Success Criteria
+![Architecture Diagram](diagrams/data_architecture.png)
 
-- Data from all source systems is integrated successfully
-- Data quality issues are identified and resolved
-- Analytical queries perform efficiently
-- Business users can access standardized reporting datasets
+### Tech Stack
+
+- Databricks
+- Delta Lake
+- Spark SQL
+- Power BI
+- Draw.io
+- Git & GitHub
+
+### Documentation
+
+- Business Requirements
+- Architecture Design
+- Data Model
+- ETL Process
