@@ -1,5 +1,5 @@
 # enterprise-data-warehouse
-An end-to-end data warehouse project demonstrating data ingestion, transformation, dimensional modeling, and analytics reporting using modern data engineering practices.
+End-to-end enterprise data warehouse project built using SQL Server. The solution integrates ERP and CRM data into a centralized analytical model to support reporting, dashboarding, and business intelligence.
 
 # Business Requirements
 
