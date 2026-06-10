@@ -1,3 +1,21 @@
+# =====================================================
+# Bronze Layer Ingestion
+# =====================================================
+# Purpose:
+# Load raw CRM and ERP source files from Databricks
+# Volumes into Bronze Delta tables.
+#
+# Process:
+# 1. Read source CSV files
+# 2. Infer schema using Spark
+# 3. Create/overwrite Bronze Delta tables
+# 4. Track total ingestion execution time
+#
+# Source Systems:
+# - CRM (Customer Relationship Management)
+# - ERP (Enterprise Resource Planning)
+# =====================================================
+
 import time
 
 # Set working catalog and schema
