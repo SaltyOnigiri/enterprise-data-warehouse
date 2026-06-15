@@ -8,8 +8,9 @@
 # Process:
 # 1. Read source CSV files
 # 2. Infer schema using Spark
-# 3. Create/overwrite Bronze Delta tables
-# 4. Track total ingestion execution time
+# 3. Add metadata columns for auditing and lineage
+# 4. Create/overwrite Bronze Delta tables
+# 5. Track total ingestion execution time
 #
 # Source Systems:
 # - CRM (Customer Relationship Management)
@@ -17,6 +18,7 @@
 # =====================================================
 
 import time
+from pyspark.sql.functions import current_timestamp, lit
 
 # Set working catalog and schema
 spark.sql("USE CATALOG enterprise_dw")
@@ -31,6 +33,10 @@ crm_cust = (
     .option("header", "true")
     .option("inferSchema", "true")
     .csv("/Volumes/enterprise_dw/bronze/source_files/source_crm/cust_info.csv")
+
+    # Add metadata for data lineage and auditing
+    .withColumn("source_system", lit("CRM"))
+    .withColumn("ingestion_date", current_timestamp())
 )
 
 crm_prd = (
@@ -38,6 +44,10 @@ crm_prd = (
     .option("header","true")
     .option("inferSchema","true")
     .csv("/Volumes/enterprise_dw/bronze/source_files/source_crm/prd_info.csv")
+
+    # Add metadata for data lineage and auditing
+    .withColumn("source_system", lit("CRM"))
+    .withColumn("ingestion_date", current_timestamp())
 )
 
 crm_sales = (
@@ -45,6 +55,10 @@ crm_sales = (
     .option("header", "true")
     .option("inferSchema", "true")
     .csv("/Volumes/enterprise_dw/bronze/source_files/source_crm/sales_details.csv")
+
+    # Add metadata for data lineage and auditing
+    .withColumn("source_system", lit("CRM"))
+    .withColumn("ingestion_date", current_timestamp())
 )
 
 # Read ERP source files
@@ -53,6 +67,10 @@ erp_cust_az12 = (
     .option("header", "true")
     .option("inferSchema", "true")
     .csv("/Volumes/enterprise_dw/bronze/source_files/source_erp/CUST_AZ12.csv")
+
+    # Add metadata for data lineage and auditing
+    .withColumn("source_system", lit("ERP"))
+    .withColumn("ingestion_date", current_timestamp())
 )
 
 erp_loc_a101 = (
@@ -60,6 +78,10 @@ erp_loc_a101 = (
     .option("header", "true")
     .option("inferSchema", "true")
     .csv("/Volumes/enterprise_dw/bronze/source_files/source_erp/LOC_A101.csv")
+
+    # Add metadata for data lineage and auditing
+    .withColumn("source_system", lit("ERP"))
+    .withColumn("ingestion_date", current_timestamp())
 )
     
 erp_px_cat_g1v2 = (
@@ -67,6 +89,10 @@ erp_px_cat_g1v2 = (
     .option("header", "true")
     .option("inferSchema", "true")
     .csv("/Volumes/enterprise_dw/bronze/source_files/source_erp/PX_CAT_G1V2.csv")
+
+    # Add metadata for data lineage and auditing
+    .withColumn("source_system", lit("ERP"))
+    .withColumn("ingestion_date", current_timestamp())
 )
 
 # Save as Bronze Delta table
