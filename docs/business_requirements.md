@@ -2,68 +2,73 @@
 
 ## Project Overview
 
-The organization currently stores customer, product, and sales information across multiple operational systems. Reporting requires manually combining data from separate sources, resulting in inconsistent metrics, duplicated effort, and limited analytical visibility.
+The organization stores customer, product, sales, and reference data across separate CRM and ERP systems. This fragmentation makes reporting difficult, requiring data from multiple sources to be manually combined before analysis.
 
-This project aims to build a centralized enterprise data warehouse that integrates ERP and CRM data into a single source of truth for reporting and analytics.
-
----
+This project builds a centralized enterprise data warehouse using a Medallion Architecture to integrate, cleanse, and standardize data into a single source of truth for downstream analytics and reporting.
 
 ## Project Objectives
 
-- Consolidate ERP and CRM data into a unified analytical platform
-- Improve data quality through cleansing and standardization processes
-- Create a dimensional data model optimized for analytical workloads
-- Enable consistent reporting and business intelligence across the organization
-- Provide clear documentation of architecture, data models, and ETL processes
-
----
+- Consolidate CRM and ERP data into a unified warehouse
+- Improve data quality through cleansing, validation, and standardization
+- Flag data quality issues without unnecessarily discarding records
+- Create analytics-ready datasets through a layered architecture
+- Provide clear technical documentation and reproducible ETL processes
 
 ## Business Goals
 
 ### Data Integration
-Combine data from multiple business systems into a centralized warehouse.
+
+Combine customer, product, sales, and reference data from multiple operational systems into a centralized platform.
 
 ### Data Quality
-Identify and resolve inconsistencies, missing values, and formatting issues before data reaches reporting layers.
+
+Standardize inconsistent values, validate business rules, identify invalid records, and create quality flags that enable downstream users to understand potential data issues.
+
+Examples include:
+- Invalid or missing dates
+- Invalid product date ranges
+- Missing or invalid sales values
+- Invalid birth dates
+- Standardized country and gender values
 
 ### Analytics Enablement
-Provide business users with trusted datasets that support reporting, dashboarding, and ad-hoc analysis.
+
+Provide clean, consistent datasets that can be used for reporting, dashboarding, and future dimensional modeling.
 
 ### Maintainability
-Implement a structured architecture that simplifies troubleshooting, future enhancements, and ongoing maintenance.
 
----
+Implement a structured Bronze → Silver → Gold architecture that separates raw ingestion from business transformations and simplifies future enhancements.
 
 ## Scope
 
 ### Included
 
-- ERP source data ingestion
 - CRM source data ingestion
-- Bronze, Silver, and Gold data layers
-- Data cleansing and transformation
-- Dimensional modeling
+- ERP source data ingestion
+- Bronze layer raw data storage
+- Silver layer data cleansing and standardization
+- Data quality validation and flag creation
+- Derived columns to support downstream processing
+- Gold layer dimensional modeling
 - Reporting-ready datasets
 - Architecture and technical documentation
 
 ### Excluded
 
-- Real-time data streaming
-- Historical change tracking (SCD)
+- Real-time streaming ingestion
+- Slowly Changing Dimensions (SCD)
 - Machine learning workloads
-- Automated orchestration tools
-
----
+- Automated orchestration and scheduling
+- Incremental change capture
 
 ## Success Criteria
 
-- Data from all source systems is successfully integrated
-- Data quality issues are identified and resolved
-- Reporting datasets are accurate and consistent
-- Analytical queries perform efficiently
+- Source data is successfully ingested into the warehouse
+- Data quality issues are identified through validation logic and quality flags
+- Key fields are standardized across systems
+- Invalid or inconsistent records are handled appropriately
+- Gold datasets support consistent analytical reporting
 - Documentation is complete and reproducible
-
----
 
 ## Expected Outcomes
 
@@ -71,6 +76,8 @@ Upon completion, the solution will provide:
 
 - A centralized enterprise data warehouse
 - A Medallion Architecture (Bronze, Silver, Gold)
+- Cleaned and standardized Silver datasets
 - Analytics-ready fact and dimension tables
-- Improved reporting consistency
+- Built-in data quality flags for improved transparency
+- Consistent reporting across CRM and ERP data sources
 - A scalable foundation for future business intelligence initiatives
