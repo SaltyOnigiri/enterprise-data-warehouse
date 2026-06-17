@@ -41,8 +41,8 @@ crm_cust = (
 
 crm_prd = (
     spark.read
-    .option("header","true")
-    .option("inferSchema","true")
+    .option("header", "true")
+    .option("inferSchema", "true")
     .csv("/Volumes/enterprise_dw/bronze/source_files/source_crm/prd_info.csv")
 
     # Add metadata for data lineage and auditing
@@ -95,7 +95,7 @@ erp_px_cat_g1v2 = (
     .withColumn("ingestion_date", current_timestamp())
 )
 
-# Save as Bronze Delta table
+# Save as Bronze Delta tables
 crm_cust.write \
     .mode("overwrite") \
     .format("delta") \
@@ -116,7 +116,7 @@ erp_cust_az12.write \
     .format("delta") \
     .saveAsTable("erp_cust_az12")
 
-erp_loc_a101.write  \
+erp_loc_a101.write \
     .mode("overwrite") \
     .format("delta") \
     .saveAsTable("erp_loc_a101")
@@ -125,7 +125,7 @@ erp_px_cat_g1v2.write \
     .mode("overwrite") \
     .format("delta") \
     .saveAsTable("erp_px_cat_g1v2")
-
+    
 batch_end = time.time()
 batch_duration = batch_end - batch_start
 
