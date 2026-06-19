@@ -24,16 +24,16 @@ The Bronze layer stores raw ERP and CRM source data with minimal transformations
 
 ### Silver Layer
 
-The Silver layer applies data cleansing, standardization, validation, and transformation processes. Data quality issues are resolved and datasets are converted into a consistent structure suitable for downstream analytical modeling.
+The Silver layer applies data cleansing, standardization, validation, and transformation processes. Data quality issues are identified and addressed through cleansing, validation, and business rule enforcement while preserving trustworthy records for downstream analytics.
 
 **Characteristics**
 
 - Data cleansing
+- Duplicate removal
 - Data standardization
-- Data normalization
+- Data validation
+- Business rule enforcement
 - Derived columns and transformations
-- Full-load processing
-- Table-based storage
 
 ### Gold Layer
 
@@ -46,7 +46,7 @@ The Gold layer contains business-ready dimensional models optimized for reportin
 - Aggregated analytical datasets
 - Fact and dimension models
 - Reporting and analytics consumption layer
-- View-based access
+- Table-based storage
 
 ---
 
@@ -56,7 +56,7 @@ The Gold layer contains business-ready dimensional models optimized for reportin
 |---------|---------|---------|---------|
 | Bronze | Tables | Full Load | Raw data ingestion |
 | Silver | Tables | Full Load | Data cleansing and transformation |
-| Gold | Views | Derived from Silver | Reporting and analytics |
+| Gold | Tables | Full Load | Reporting and analytics |
 
 ---
 
