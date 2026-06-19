@@ -26,18 +26,27 @@ Organizations often store data across multiple systems, making reporting difficu
 
 The warehouse integrates data from separate CRM and ERP source systems. The diagram below illustrates the relationships between the source entities used throughout the ETL process.
 
-![Architecture Diagram](diagrams/source_system_data_model.png)
+![Source System Data Model](diagrams/source_system_data_model.png)
 
 ## Gold Layer Data Model
 
 The Gold layer is modeled as a star schema:
 
-![Architecture Diagram](diagrams/gold_star_schema.png)
+![Gold Star Schema](diagrams/gold_star_schema.png)
 
 - `dim_customer` – Customer attributes and demographics
 - `dim_product` – Product and category information
 - `fact_sales` – Sales transactions linked to customer and product dimensions through surrogate keys
 
+## Power BI Dashboard
+
+### Executive Dashboard
+
+![Enterprise Sales Dashboard](reports/enterprise_sales_analytics.png)
+
+### Power BI Data Model
+
+![Power BI Data Model](reports/powerbi_relationship_model.png)
 
 ## Tech Stack
 
