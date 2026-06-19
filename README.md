@@ -24,6 +24,12 @@ Organizations often store data across multiple systems, making reporting difficu
 
 *Architecture Diagram Here*
 
+## Source System Data Model
+
+The warehouse integrates data from separate CRM and ERP source systems. The diagram below illustrates the relationships between the source entities used throughout the ETL process.
+
+![Architecture Diagram](diagrams/source_system_data_model.png)
+
 ## Gold Layer Data Model
 
 The Gold layer is modeled as a star schema:
