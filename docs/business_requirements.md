@@ -2,82 +2,73 @@
 
 ## Project Overview
 
-The organization stores customer, product, sales, and reference data across separate CRM and ERP systems. This fragmentation makes reporting difficult, requiring data from multiple sources to be manually combined before analysis.
+The organization stores customer, product, sales, and reference data across separate CRM and ERP systems. This fragmentation makes reporting difficult and increases the risk of inconsistent business metrics.
 
-This project builds a centralized enterprise data warehouse using a Medallion Architecture to integrate, cleanse, and standardize data into a single source of truth for downstream analytics and reporting.
+This project addresses those challenges by building a centralized enterprise data warehouse in Databricks using a Medallion Architecture. Raw operational data is ingested, cleansed, validated, and transformed into analytics-ready dimensional models.
 
 ## Project Objectives
 
-- Consolidate CRM and ERP data into a unified warehouse
+- Integrate CRM and ERP data into a centralized warehouse
 - Improve data quality through cleansing, validation, and standardization
-- Flag data quality issues without unnecessarily discarding records
-- Create analytics-ready datasets through a layered architecture
-- Provide clear technical documentation and reproducible ETL processes
+- Preserve transparency by flagging invalid data during transformation
+- Build analytics-ready dimension and fact tables using a star schema
+- Provide clear documentation and reproducible ETL pipelines
 
 ## Business Goals
 
 ### Data Integration
 
-Combine customer, product, sales, and reference data from multiple operational systems into a centralized platform.
+Consolidate customer, product, sales, and reference data from multiple source systems into a single analytical platform.
 
 ### Data Quality
 
-Standardize inconsistent values, validate business rules, identify invalid records, and create quality flags that enable downstream users to understand potential data issues.
+Apply business rules to standardize values, validate records, and improve consistency across datasets.
 
 Examples include:
-- Invalid or missing dates
-- Invalid product date ranges
-- Missing or invalid sales values
-- Invalid birth dates
-- Standardized country and gender values
+- Duplicate customer removal
+- Product date range validation
+- Sales value validation and recalculation where appropriate
+- Birth date validation
+- Standardized gender, marital status, and country values
+- Product key standardization for cross-system joins
 
 ### Analytics Enablement
 
-Provide clean, consistent datasets that can be used for reporting, dashboarding, and future dimensional modeling.
+Deliver business-ready dimension and fact tables optimized for reporting, dashboarding, and ad hoc SQL analysis.
 
 ### Maintainability
 
-Implement a structured Bronze → Silver → Gold architecture that separates raw ingestion from business transformations and simplifies future enhancements.
+Use a layered Bronze → Silver → Gold architecture that clearly separates raw ingestion, transformation logic, and analytical models.
 
 ## Scope
 
 ### Included
 
-- CRM source data ingestion
-- ERP source data ingestion
+- CRM and ERP data ingestion
 - Bronze layer raw data storage
-- Silver layer data cleansing and standardization
-- Data quality validation and flag creation
-- Derived columns to support downstream processing
-- Gold layer dimensional modeling
-- Reporting-ready datasets
-- Architecture and technical documentation
-
-### Excluded
-
-- Real-time streaming ingestion
-- Slowly Changing Dimensions (SCD)
-- Machine learning workloads
-- Automated orchestration and scheduling
-- Incremental change capture
+- Silver layer cleansing, validation, and standardization
+- Business rule enforcement and derived columns
+- Gold layer star schema with dimension and fact tables
+- Surrogate key generation and dimensional joins
+- Architecture diagrams and technical documentation
 
 ## Success Criteria
 
-- Source data is successfully ingested into the warehouse
-- Data quality issues are identified through validation logic and quality flags
-- Key fields are standardized across systems
-- Invalid or inconsistent records are handled appropriately
-- Gold datasets support consistent analytical reporting
-- Documentation is complete and reproducible
+- Source data is successfully ingested into Bronze tables
+- Business rules and validations are applied in the Silver layer
+- Gold layer provides consistent customer, product, and sales models
+- Fact and dimension tables are linked through surrogate keys
+- Invalid records are appropriately flagged or excluded from analytical models
+- Documentation accurately describes the architecture and implementation
 
 ## Expected Outcomes
 
-Upon completion, the solution will provide:
+Upon completion, the solution provides:
 
-- A centralized enterprise data warehouse
-- A Medallion Architecture (Bronze, Silver, Gold)
+- A centralized enterprise data warehouse built in Databricks
+- A Medallion Architecture consisting of Bronze, Silver, and Gold layers
 - Cleaned and standardized Silver datasets
-- Analytics-ready fact and dimension tables
-- Built-in data quality flags for improved transparency
-- Consistent reporting across CRM and ERP data sources
-- A scalable foundation for future business intelligence initiatives
+- A star schema with customer and product dimensions linked to a sales fact table
+- Built-in data quality validation and business rule enforcement
+- Analytics-ready data suitable for reporting and business intelligence
+- A maintainable foundation for future expansion
