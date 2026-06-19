@@ -22,8 +22,6 @@ Organizations often store data across multiple systems, making reporting difficu
 - **Silver Layer** – Data cleansing, duplicate removal, standardization, data validation, business rule enforcement, and filtering of invalid records to produce trusted datasets for downstream analytics.
 - **Gold Layer** – Analytics-ready star schema consisting of customer and product dimensions with a sales fact table
 
-*Architecture Diagram Here*
-
 ## Source System Data Model
 
 The warehouse integrates data from separate CRM and ERP source systems. The diagram below illustrates the relationships between the source entities used throughout the ETL process.
