@@ -10,23 +10,25 @@
 ## CRM Product (`crm_prd`)
 - Derived `cat_id` from `prd_key`.
 - Derived `sls_prd_key` from `prd_key`.
+- Standardized `sls_prd_key` formatting for downstream joins.
 - Replaced null product costs with `0`.
 - Expanded product line abbreviations.
-- Added `missing_start_date` flag.
-- Added `invalid_date_range` flag.
+- Added `missing_start_date` quality flag.
+- Added `invalid_date_range` quality flag.
 
 ## CRM Sales (`crm_sales`)
 - Flagged invalid order dates.
 - Converted order, ship, and due dates to Spark date format.
-- Added flags for invalid sales amount, quantity, and price.
-- Populated missing sales values when quantity and price were available.
-- Populated missing prices when sales and quantity were available.
+- Standardized `sls_prd_key` by replacing `-` with `_` to align with product dimension keys.
+- Added quality flags for invalid sales amounts, quantities, and prices.
+- Populated missing sales values when valid quantity and price values were available.
+- Populated missing prices when valid sales and quantity values were available.
 
 ## ERP Customer (`erp_cust`)
 - Removed source prefixes from `CID`.
-- Added `invalid_birth_date` flag.
+- Added an `invalid_birth_date` quality flag.
 - Replaced invalid birth dates with `NULL`.
-- Standardized gender values.
+- Expanded gender codes (`M` → `Male`, `F` → `Female`).
 - Converted blank gender values to `NULL`.
 
 ## ERP Location (`erp_loc`)
@@ -35,5 +37,5 @@
 - Converted blank country values to `NULL`.
 
 ## ERP Product (`erp_px_cat`)
-- No transformations required.
-- Renamed for consistency with Silver layer naming conventions.
+- No data cleansing was required.
+- Renamed the table to align with Silver layer naming conventions.
