@@ -19,7 +19,7 @@ Organizations often store data across multiple systems, making reporting difficu
 ![Architecture Diagram](diagrams/data_architecture.png)
 
 - **Bronze Layer** – Raw data ingestion from source systems into Delta tables
-- **Silver Layer** – Data cleansing, standardization, validation, and business rule application
+- **Silver Layer** – Data cleansing, duplicate removal, standardization, data validation, business rule enforcement, and filtering of invalid records to produce trusted datasets for downstream analytics.
 - **Gold Layer** – Analytics-ready star schema consisting of customer and product dimensions with a sales fact table
 
 *Architecture Diagram Here*
