@@ -178,6 +178,12 @@ crm_sales_clean = crm_sales_clean.withColumn(
     ).otherwise(col("sls_price"))
 )
 
+# Standardize product keys to match product dimension keys.
+crm_sales_clean = crm_sales_clean.withColumn(
+    "sls_prd_key",
+    regexp_replace("sls_prd_key", "-", "_")
+)
+
 # -----------------------------
 # ERP Birthdate Transformations
 # -----------------------------
